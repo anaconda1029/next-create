@@ -4,15 +4,21 @@ export default () =>{
 
     return (
     <div>
-        <Link href="/UserInfo">
-            UserInfo
+        <h2>NEXT Demo </h2>
+
+        <Link href="/QueryTransaction">
+            QueryTransaction
         </Link>
         <br/>
-        <Link href="/queryUser">
-            QueryUserInfo
+        <Link href="/InsertTransaction">
+            InsertTransaction
+        </Link>
+        <br/>
+        <Link href="/InsertUser">
+            InsertUserInfo
         </Link>
 
-        <h2>Index Demo </h2>
+        
     </div>
 )
     }

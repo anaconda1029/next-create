@@ -26,23 +26,50 @@ export default class test extends Component{
                     age:<input type="text" name="email" id="email" />
                     <br/>
                 </form>
-                {
+                User List
+                { 
                     this.props.users.map(item =>{
-                        return <tr key={item._id}>{item.name}
-                        <tr>{item.email}</tr>
+                        return <tr>
+                        <button key={item._id}>{item.name} onClick={this.queryTransactionByUser}
+                        {/* <tr>{item.email}</tr>
                         <tr>{item.walletAddress}</tr>
                         <tr>{item.phone}</tr>
                         <tr>{item.name}</tr>
                         <tr>{item.source}</tr>
-                        <tr>{item.token}</tr>
+                        <tr>{item.token}</tr> */}
+                        </button>
                         </tr>
                     })
                 }
-
+                Users’ transactions
+                {/* {
+                    this.props.transaction.map(item =>{
+                        return <tr key={item._id}>name:{item.name}
+                        <tr>quantity:{item.quantity}</tr>
+                        <tr>date:{item.date}</tr>
+                        <tr>address:{item.address}</tr>
+                        </tr>
+                    })
+                } */}
                 </tbody>
 
             </table>
-
         )
     }
+
+    queryTransactionByUser = (e) => {
+        e.preventDefault();
+        alert('test');
+        let userName = this.state['name'];
+    
+        fetch(['api/queryTransactionByUser.js'], {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ userName: userName})
+        }).then((res) => res.json())
+            .then((data) => console.log(data))
+            .catch((err) => console.log(err))
+        return {transaction:res.data.data}
+    }
+
 }
